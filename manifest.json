@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Frog Dev Tools",
+    "description": "Helpers for developing in Frog",
+    "version": "1.0",
+
+    "permissions": [
+        "http://*.frogosdev.co.uk/",
+        "http://*.frogtest.co.uk/",
+        "https://*.frogosdev.co.uk/",
+        "https://*.frogtest.co.uk/"
+    ],
+    "browser_action": {
+        "default_icon": "favicon.png"
+    },
+    "web_accessible_resources": [
+        "js/*"
+    ],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": [
+            "include.js"
+        ]
+    }]
+}
