@@ -5,16 +5,30 @@
             'js/search-role.js',
             'js/reload-css.js',
             'js/upgrade.js'
-        ];
+        ],
+        addScript = function(path) {
+            script = document.createElement('script');
+            script.src = chrome.extension.getURL(path);
 
-    for (; i < files.length; i++) {
-        script = document.createElement('script');
-        script.src = chrome.extension.getURL(files[i]);
+            script.onload = function() {
+                this.parentNode.removeChild(this);
 
-        script.onload = function() {
-            this.parentNode.removeChild(this);
+                for (; i < files.length; i++) {
+                    script = document.createElement('script');
+                    script.src = chrome.extension.getURL(files[i]);
+
+                    script.onload = function() {
+                        this.parentNode.removeChild(this);
+                    };
+
+                    (document.head||document.documentElement).appendChild(script);
+                }
+            };
+
+            (document.head||document.documentElement).appendChild(script);
+
+            return script;
         };
 
-        (document.head||document.documentElement).appendChild(script);
-    }
+    addScript('js/devtool-setup.js');
 })();
