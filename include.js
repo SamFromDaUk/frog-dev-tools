@@ -4,7 +4,9 @@
         files = [
             'js/search-role.js',
             'js/reload-css.js',
-            'js/upgrade.js'
+            'js/upgrade.js',
+            'js/setup-initial.js',
+            'js/frog.js'
         ],
         addScript = function(path) {
             script = document.createElement('script');

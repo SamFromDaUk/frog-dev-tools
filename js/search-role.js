@@ -1,5 +1,3 @@
-window.DevTool = window.DevTool || {};
-
 DevTool.searchRole = function(role) {
     var matches = {},
         expression;
@@ -8,6 +6,13 @@ DevTool.searchRole = function(role) {
         expression = new RegExp(role, 'i');
     } catch(Exception) {
         console.error('Invalid regular expression');
+        return;
+    }
+
+    try {
+        _Roles.has();
+    } catch(Exception) {
+        console.error('window._Roles is not defined');
         return;
     }
 

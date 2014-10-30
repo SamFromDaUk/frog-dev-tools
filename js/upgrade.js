@@ -1,6 +1,6 @@
-window.DevTool = window.DevTool || {};
-
 DevTool.upgrade = function(deployment, params) {
+    params = params || {};
+
     var scriptPath = 'lib/_upgrade.php?',
         options = {
             log: params.log || true,
